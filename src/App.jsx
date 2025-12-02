@@ -34,13 +34,13 @@ function App() {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer sk-or-v1-MASUKIN-KEY-OPENROUTER-KAMU-DI-SINI',
+          'Authorization': 'Bearer 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',
           'Content-Type': 'application/json',
-          'HTTP-Referer': 'http://localhost:5173',
+          'HTTP-Referer': 'https://aikeren.vercel.app/',
           'X-Title': 'Zell AI'
         },
         body: JSON.stringify({
-          model: "google/gemini-flash-1.5",
+          model: "x-ai/grok-4.1-fast:free",
           messages: [
             { role: "system", content: "Kamu adalah Zell AI — asisten yang cantik, ramah, jenaka, cerdas, dan selalu membantu dengan gaya santai." },
             ...newMessages.map(m => ({ role: m.role, content: m.content }))
@@ -50,7 +50,7 @@ function App() {
       });
 
       const data = await response.json();
-      const aiReply = data.choices?.[0]?.message?.content || "Maaf, aku lagi bingung nih…";
+      const aiReply = data.choices?.[0]?.message?.content || "Api Key belum di masukkan";
 
       setMessages(prev => {
         const updated = prev.slice(0, -1);
